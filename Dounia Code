@@ -1,0 +1,344 @@
+
+
+
+
+USE corona_hospital;
+
+#creating and populating the tables:
+CREATE TABLE covid_staff( 
+Dr_first_name VARCHAR(50),
+Dr_last_name VARCHAR (50), 
+doctor_id VARCHAR (50),
+ward VARCHAR(50)
+); 
+
+
+INSERT INTO covid_staff
+(Dr_first_name, Dr_last_name, doctor_id, ward)
+VALUES 
+("Rolan", "Hyde", "001", "ICU"), 
+("Alun", "Ryke", "003", "General Ward"), 
+("Robert", "Job", "004", "ICU"),
+("Yolanda", "Brown", "005", "General Ward"), 
+("Nadiya", "Kareem", "010", "Discharge Lounge"), 
+("Adrien", "Rodgers", "012", "Discharge Lounge"), 
+("Linda", "Johnson", "013", "Discharge Lounge"), 
+("Laura", "King", "006", "General Ward"), 
+("Ahmed", "Khan", "090", "General Ward"), 
+("Sid", "Wilson", "039", "ICU");
+
+CREATE TABLE all_staff(
+Dr_first_name VARCHAR(50), 
+Dr_last_name VARCHAR(50),
+doctor_id VARCHAR(50),
+ward VARCHAR(50)
+);
+
+INSERT INTO all_staff
+(Dr_first_name, Dr_last_name, doctor_id, ward)
+VALUES
+("Rolan", "Hyde", "001", "ICU"), 
+("Alun", "Ryke", "003", "General Ward"), 
+("Robert", "Job", "004", "ICU"),
+("Yolanda", "Brown", "005", "General Ward"), 
+("Nadiya", "Kareem", "010", "Discharge Lounge"), 
+("Adrien", "Rodgers", "012", "Discharge Lounge"), 
+("Linda", "Johnson", "013", "Discharge Lounge"), 
+("Laura", "King", "006", "General Ward"), 
+("Ahmed", "Khan", "090", "General Ward"), 
+("Sid", "Wilson", "039", "ICU"), 
+("Angela", "Vin", "029", "Paediatrics"), 
+("Dora", "Red", "089", "Cardiology"), 
+("Nick", "Milan", "138", "Radiography"), 
+("Mila", "Vander", "067", "ENT"),
+("Mounir", "Nur", "097", "Gastroenterology"),
+("Belinda", "Corr", "045", "General Surgery"), 
+("Alfredo", "Vasquez", "083", "Haematology"); 
+
+
+CREATE TABLE rooms(
+room_number VARCHAR(50), 
+beds_available FLOAT, 
+wing VARCHAR(50),
+wing_floor FLOAT); 
+
+
+INSERT INTO rooms
+( room_number, beds_available, wing, wing_floor)
+VALUES
+(2, 4, "Red", 1),
+(2, 5, "Blue", 1),
+(6, 1, "Red", 2), 
+(3, 0, "Yellow", 4), 
+(7, 10, "Red", 2) , 
+(12, 3, "Blue", 1), 
+(15, 2, "Red", 2),
+(9, 6, "Yellow", 3),
+(2, 8, "Yellow", 4);
+
+
+CREATE TABLE tests(
+patient_id VARCHAR(50),
+first_name VARCHAR(50),
+last_name VARCHAR(50), 
+date_test VARCHAR(50),
+examination_room FLOAT, 
+examination_result VARCHAR(50)
+);
+
+INSERT INTO tests
+(patient_id, first_name, last_name, date_test, examination_room, examination_result)
+VALUES
+	("10000", "Alex", "Smith", "19-08-20", "2", "Negative"),
+    ("10001", "Norbet", "Andrews", "04-03-20","2", "Negative"),
+    ("10002", "Ginger", "Alberts", "30-01-20", "3", "Negative"),
+    ("10003", "ALiya", "Anderson", "10-06-20", "8", "Positive"),
+    ("10004", "John", "Smith", "12-07-20", "4", "Positive"),
+    ("10005", "Indira", "Rama", "08-03-2020","6", "Negative"),
+    ("10006", "Flemeth", "Mythaal", "18-04-20", "1", "Negative"),
+    ("10007", "Kieran", "Rock", "15-08-2020", "3", "Negative"),
+    ("10008", "Alexa", "Amazon", "09-06-20", "4", "Negative"),
+    ("10010", "Amelia", "Earhart", "20-03-20", "5", "Negative"),
+    ("10011", "Layla", "Roberts", "02-05-20", "8",  "Positive"),
+    ("10012", "Nora", "Roberts", "12-08-20",  "2", "Positive"),
+    ("10013", "Lue", "Allen",  "09-08-20", "3", "Positive"),
+    ("10014", "Theodore", "Hawke", "28-01-2020", "4", "Negative"),
+	("10015", "Jonas", "Adams", "15-03-20", "4",  "Positive"),
+    ("10016", "Khaalid", "Younus", "19-02-20", "5", "Negative"),
+    ("10020", "Inaya", "Davies", "20-05-20", "6", "Negative"),
+    ("10021", "Kalie", "Fin",  "07-02-20", "7","Negative"),
+    ("10035", "Charles", "Darwin", "16-02-20", "1", "7623453234"),
+    ("10045", "Lewis", "Edwards", "11-07-20", "1", "Negative");
+    
+    
+#Hafsa's tables: 
+
+CREATE TABLE Patient_Coronavirus (
+    Patient_ID VARCHAR(20) NOT NULL,
+    First_Name VARCHAR(20) NOT NULL,
+    Last_Name VARCHAR(20) NOT NULL,
+    Gender VARCHAR(20) NOT NULL,
+    DOB VARCHAR(20) NOT NULL,
+    Phone_Number VARCHAR(20) NOT NULL,
+    Room_Number VARCHAR(20) NOT NULL,
+    Ward VARCHAR(20) NOT NULL,
+    doctor_id VARCHAR(50) NOT NULL,
+    Dr_First_name VARCHAR(20) NOT NULL,
+    Dr_Last_name VARCHAR(20) NOT NULL
+    );
+    INSERT INTO Patient_Coronavirus 
+    (Patient_ID, First_name, Last_Name, Gender, DOB, phone_number, Room_Number, Ward, Doctor_ID, Dr_First_Name, Dr_Last_Name)
+    VALUES
+    ("10003", "ALiya", "Anderson", "F", "20-06-1967", "0771625396", "3.03", "ICU", "001", "Rolan", "Hyde"),
+    ("10004", "John", "Smith", "M","12-06-1950", "765432897","3.01", "ICU", "001", "Rolan", "Hyde"),
+    ("10015", "Jonas", "Adams", "M", "5-03-87", "7754321987",  "4.02", "General Ward", "003", "Alan", "Ryuk" ),
+    ("10001", "Layla", "Roberts", "F", "02-01-1970", "78645398103",  "3.02", "ICU", "004", "Robert", "Job"),
+    ("10012", "Nora", "Roberts", "F", "07-08-1990", "70987612432",  "4.01", "General Ward", "005", "Yolanda", "Brown"),
+    ("10001", "Lue", "Allen", "F", "09-11-1961", "78865432097",  "3.04", "ICU", "001", "Rolan", "Hyde"),
+    ("10034", "Yahya", "Abdul", "M", "23-01-1952", "0765434564",  "2.01", "Discharge Lounge", "010", "Nadiya", "Kareem"),
+    ("10005", "Indira", "Rama", "F", "08-07-1949", "786545643",  "3.02", "ICU", "004", "Robert", "Job"),
+    ("10006", "Kieran", "Rock", "M", "15-03-1939", "765456324",  "3.05", "ICU", "004", "Robert", "Job"),
+    ("10020", "Inaya", "Davies", "F", "12-06-1969", "765434567",  "2.05", "Discharge Lounge", "010", "Nadiya", "Kareem"),
+    ("10045", "Lewis", "Edwards", "M", "11-06-1980", "8762356743",  "2.00", "Discharge Lounge", "012", "Adrien", "Rodgers"),
+    ("10035", "Charles", "Darwin", "M", "16-10-1959", "7623453234",  "2.15", "Discharge Lounge", "013", "Linda", "Johnson"),
+    ("10010", "Amelia", "Earhart", "F", "14-03-1930", "764987234","4.05", "General Ward", "006", "Laura", "King"),
+    ("10009", "Theodore", "Hawke", "M", "31-01-1945", "786543453",  "4.09", "General Ward", "090", "Ahmed", "Khan"),
+    ("10021", "Kalie", "Fin", "F", "07-12-1946", "796535466",  "4.04", "General Ward", "090", "Ahmed", "Khan"),
+    ("10078", "Ali", "Bilaal", "M", "02-11-1948", "7065334532", "3.43", "ICU", "039", "Sid", "Wilson") ;
+CREATE TABLE all_inpatient (
+    Patient_ID VARCHAR(20) NOT NULL,
+    First_Name VARCHAR(20) NOT NULL,
+    Last_Name VARCHAR(20) NOT NULL,
+    DOB VARCHAR(20) NOT NULL,
+    Gender VARCHAR(20) NOT NULL,
+    Phone_Number VARCHAR(20) NOT NULL,
+    Room_Number int NOT NULL,
+    Ward VARCHAR(20) NOT NULL,
+    COVID_19 VARCHAR(20) NOT NULL,
+    doctor_id VARCHAR(50) NOT NULL,
+    Dr_First_name VARCHAR(20) NOT NULL,
+    Dr_Last_name VARCHAR(20) NOT NULL
+    );
+    INSERT INTO all_inpatient
+    (Patient_ID, First_name, Last_Name, DOB, Gender, Phone_Number, Room_Number, Ward, COVID_19, doctor_id, Dr_First_name, Dr_Last_Name)
+    VALUES
+    ("10000", "Alex", "Smith", "01-11-95", "M", "7892455432", "3.00",  "ICU", "POS", "101", "Brandon", "Sanderson"),
+    ("10001", "Norbet", "Andrews", "04-09-69","M", "7896534565", "3.01", "ICU", "POS", "016","Erica", "Simons" ),
+    ("10002", "Ginger", "Alberts", "30-12-49", "F", "778345643", "3.02", "ICU", "N/A", "016", "Erica", "Simons"),
+    ("10003", "ALiya", "Anderson", "20-06-67", "F", "771625396", "3.03", "ICU", "POS", "001", "Rolan", "Hyde"),
+    ("10004", "John", "Smith", "12-06-50", "M", "789054622", "3.04", "ICU", "POS", "001", "Rolan", "Hyde"),
+    ("10005", "Indira", "Rama", "08-07-1949","F", "786545643",  "3.05", "ICU", "POS", "004", "Robert", "Job"),
+    ("10006", "Flemeth", "Mythaal", "11-04-70", "F", "7098837262", "4.10", "General Ward", "NA","009", "Alissa", "George"),
+    ("10007", "Kieran", "Rock", "15-03-1939", "M", "765456324",  "3.05", "ICU", "POS", "004", "Robert", "Job"),
+    ("10008", "Alexa", "Amazon", "01-06-64", "F", "76836229344", "4.28", "General Ward", "POS", "009", "Alisa", "George"),
+    ("10010", "Amelia", "Earhart", "14-03-930", "F", "764987234", "4.05", "General Ward", "POS", "006", "Laura", "King"),
+    ("10011", "Layla", "Roberts", "02-01-70", "F",  "78645398103",  "3.02", "ICU", "POS", "004", "Robert", "Job"),
+    ("10012", "Nora", "Roberts", "07-08-90",  "F", "70987612432",  "4.01", "General Ward", "POS", "005", "Yolanda", "Brown"),
+    ("10013", "Lue", "Allen",  "09-11-61", "F", "78865432097", "3.04", "ICU", "POS", "001", "Rolan", "Hyde"),
+    ("10014", "Theodore", "Hawke", "31-01-1945", "M", "786543453",  "4.09", "General Ward", "POS", "090", "Ahmed", "Khan"),
+	("10015", "Jonas", "Adams", "5-03-87", "M",  "7754321987",  "4.02", "General Ward", "POS", "003", "Alan", "Ryuk"),
+    ("10016", "Khaalid", "Younus", "09-02-61", "M", "709846632", "4.02", "General Ward", "NA", "060", "Lenora", "Matthews"),
+    ("10020", "Inaya", "Davies", "12-06-69", "F", "765434567",  "2.05", "Discharge Lounge", "POS", "010", "Nadiya", "Kareem"),
+    ("10021", "Kalie", "Fin",  "07-12-1946", "F","796535466",  "4.04", "General Ward", "POS", "090", "Ahmed", "Khan"),
+    ("10035", "Charles", "Darwin", "16-10-59", "M", "7623453234",  "2.15", "Discharge Lounge", "POS", "013", "Linda", "Johnson"),
+    ("10045", "Lewis", "Edwards", "11-06-80", "M", "8762356743", "2.00", "Discharge Lounge", "POS", "012", "Adrien", "Rodgers")
+    ;
+
+CREATE TABLE VITALS_COVID_19 (
+Patient_ID VARCHAR(20) NOT NULL,
+Height_metres FLOAT(10) NOT NULL,
+Weight_KG FLOAT(10) NOT NULL,
+Temperature VARCHAR(20) NOT NULL,
+Heart_Rate INT(20) NOT NULL,
+Respiratory_Rate VARCHAR(20) NOT NULL,
+Blood_Pressure VARCHAR(20) NOT NULL,
+Oxygen_Saturation INT(20) NOT NULL);
+INSERT INTO VITALS_COVID_19
+(Patient_ID, Height_metres, Weight_KG, Temperature, Heart_Rate, Respiratory_Rate, Blood_Pressure, Oxygen_Saturation)
+VALUES
+("10003", "1.6", "70", "38.5", "110", "30", "120/79", "83"),
+("10004", "1.83", "100", "39", "120", "35", "130/80", "79"),
+("10015", "1.75", "120", "37.6", "100", "26", "110/50", "89"),
+("10001", "1.65", "87", "38.8", "120", "45", "140/89", "82"),
+("10012", "1.89", "100", "37.8", "90", "25", "90/60", "93"),
+("10001", "1.5", "80", "40", "130", "40", "140/89", "85"),
+("10034", "1.8", "95", "37", "74", "20", "80/40", "99"),
+("10005", "1.68", "60", "40", "110", "40", "120/82", "80"),
+("10006", "1.79", "70", "39", "120", "39", "121/79", "79"),
+("10020", "1.75", "100", "37", "75", "15", "110/70", "100"),
+("10045", "1.68", "80", "37.3", "70", "20", "115/60", "100"),
+("10035", "1.83", "90", "37", "80", "20", "100/75", "100"),
+("10010", "1.45", "50","39", "100", "35", "130/85", "90"),
+("10009", "1.69", "65", "38.7", "98", "30", "130/70", "87"),
+("10021", "1.63", "79", "37.9", "100", "38", "120/85", "91"),
+("10078", "1.89", "130", "39.8", "110", "40", "142/86", "85");
+
+
+CREATE TABLE Treatment_COVID_19 (
+Patient_ID VARCHAR(20) NOT NULL,
+CPAP VARCHAR(20) NOT NULL,
+Ventilator VARCHAR(20) NOT NULL,
+Propofol VARCHAR(20) NOT NULL,
+Dialysis VARCHAR(20) NOT NULL,
+Dexamethasone VARCHAR(20) NOT NULL,
+Tocilizumab VARCHAR(20) NOT NULL) ;
+INSERT INTO Treatment_COVID_19
+(Patient_ID, CPAP, Ventilator, Propofol, Dialysis, Dexamethasone, Tocilizumab)
+VALUES
+("10003", "N", "Y", "Y", "N", "Y", "N"),
+("10004", "N", "Y", "Y", "Y", "N", "Y"),
+("10015", "Y", "N", "N", "N", "N", "N"),
+("10001", "N", "Y", "Y", "N", "Y", "N"),
+("10012", "Y", "N", "N", "Y", "N", "Y"),
+("10001", "N", "Y", "Y", "N", "Y", "N"),
+("10034", "N", "N", "N", "Y", "N", "N"),
+("10005", "N", "Y", "Y", "N", "Y", "N"),
+("10006", "N", "Y", "Y", "N", "Y", "N"),
+("10020","N", "N", "N", "N", "N", "N"),
+("10045", "N", "N", "N", "Y", "N", "N"),
+("10035", "N", "N", "N", "Y", "N", "N"),
+("10010", "Y", "N", "N", "Y", "N", "N"),
+("10009", "Y", "N", "N", "Y", "Y", "N"),
+("10021", "Y", "N", "N", "Y", "Y", "N"),
+("10078", "N", "Y", "Y", "N", "Y", "N") ;
+
+
+
+
+
+#inserting the primary and foreign keys: 
+
+#between all inpatient and test:
+
+ALTER TABLE all_inpatient 
+ADD PRIMARY KEY (patient_id);
+
+ALTER TABLE tests
+ADD FOREIGN KEY (patient_id) REFERENCES all_inpatient( patient_id);
+
+
+#executed
+
+
+#between covid staff and patients coronavirus (primary key of doctor id already defined earlier under patient coronavirus) 
+
+ALTER TABLE covid_staff
+ADD FOREIGN KEY (doctor_id) REFERENCES patient_coronavirus(doctor_id);
+
+#executed
+
+
+#right and left joins to make a full join on corona patients and vitals to have all information in one table
+SELECT a.Patient_ID, a.First_Name, a.Last_name, a.Gender, a.DOB, a.Phone_Number, a.Room_Number, a.Ward, a.doctor_id, a.Dr_First_name, a.Dr_Last_name 
+FROM patient_coronavirus a
+LEFT OUTER JOIN vitals_covid_19 b
+ON a.Patient_ID=b.Patient_ID
+UNION
+SELECT a.Patient_ID, a.First_Name, a.Last_name, a.Gender, a.DOB, a.Phone_Number, a.Room_Number, a.Ward, a.doctor_id, a.Dr_First_name, a.Dr_Last_name 
+FROM patient_coronavirus a
+RIGHT OUTER JOIN vitals_covid_19 b
+ON a.Patient_ID=b.Patient_ID;
+
+
+#creating a view for positive tests:
+CREATE VIEW patients_positive_tests AS
+SELECT patient_id, first_name, last_name, date_test
+FROM tests
+WHERE examination_result = 'Positive';
+
+
+#example query:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+       
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
